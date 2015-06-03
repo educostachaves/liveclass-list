@@ -22,8 +22,6 @@ function formatJson($obj)
 }
 
 //Includes
-include("customer.php");
-include("employee.php");
-
+include("liveclass.php");
 
 $app->run();
