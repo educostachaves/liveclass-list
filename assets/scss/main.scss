@@ -1,5 +1,10 @@
-$bower-path: "../../bower_components/";
-
 @import 
-	"../../bower_components/foundation/scss/normalize.scss",
-	"../../bower_components/foundation/scss/foundation.scss";
+	"../../bower_components/foundation/scss/normalize",
+	"../../bower_components/foundation/scss/foundation/settings",
+	"../../bower_components/foundation/scss/foundation";
+
+.top-bar {
+	.row {
+		max-width: rem-calc(1000);
+	}
+}
