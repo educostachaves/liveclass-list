@@ -1,7 +1,6 @@
 
-
-//function clientesController($scope,$http,$routeParams,$location)
-$app.controller('clientesController',function ($scope,$http,$routeParams,$location) {
+//function liveclassController($scope,$http,$routeParams,$location)
+$app.controller('liveclassController',function ($scope,$http,$routeParams,$location) {
 	//lista de clientes
 	$scope.rows = null;
 
@@ -18,7 +17,7 @@ $app.controller('clientesController',function ($scope,$http,$routeParams,$locati
 
 	$scope.loadAll = function(){
 		$scope.showLoader();
-		$http.get($scope.server("/customers")).success(function(data){
+		$http.get($scope.server("/liveclass")).success(function(data){
 			$scope.rows = data;	
 			$scope.hideLoader();
 		});
@@ -28,7 +27,7 @@ $app.controller('clientesController',function ($scope,$http,$routeParams,$locati
 		if ($routeParams.id!=null)
 		{
 			$scope.showLoader();
-			$http.get($scope.server("/customer/"+$routeParams.id)).success(function(data){
+			$http.get($scope.server("/liveclass/"+$routeParams.id)).success(function(data){
 				$scope.row = data;
 				$scope.row.isUpdate = true;
 				$scope.hideLoader();
@@ -45,7 +44,7 @@ $app.controller('clientesController',function ($scope,$http,$routeParams,$locati
 
 	$scope.save = function(){
 		$scope.showLoader();
-		$http.post($scope.server("/customer/"+$routeParams.id),$scope.row).success(function(data){
+		$http.post($scope.server("/liveclass/"+$routeParams.id),$scope.row).success(function(data){
 			alert("Salvo com sucesso");
 			$scope.row.isUpdate = true;
 			$scope.hideLoader();
@@ -54,10 +53,10 @@ $app.controller('clientesController',function ($scope,$http,$routeParams,$locati
 
 	$scope.del = function(){
 		if (confirm("Deseja excluir " + $scope.row.CustomerID + "?")){
-			$http.delete($scope.server("/customer/"+$routeParams.id)).success(function(s){
+			$http.delete($scope.server("/liveclass/"+$routeParams.id)).success(function(s){
 				$scope.hideLoader();
 				alert("Excluído com sucesso");
-				$location.path("/clientes");
+				$location.path("/liveclass");
 			});
 		}
 

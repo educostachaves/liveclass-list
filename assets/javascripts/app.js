@@ -2,7 +2,7 @@
 //SERVER_URL = "http://localhost/sales-server";
 
 //Novo server_url para o cloud9
-SERVER_URL = "https://demo-project-c9-danielschmitz.c9.io/angular/livro-angular/sales-server";
+SERVER_URL = "http://localhost/liveclass-list/api/";
 
 //Criação ao $app que é o modulo que representa toda a aplicação
 var $app = angular.module('app',['ngRoute']);
@@ -12,10 +12,9 @@ $app.config(['$routeProvider','$httpProvider',function($routeProvider,$httpProvi
 	//Configura o route provider
 	$routeProvider.
 	when('/',{templateUrl:'view/main.html'}).
-	when('/clientes',{templateUrl:'view/clientes/main.html',controller:'clientesController'}).
-	when('/clientes/new',{templateUrl:'view/clientes/update.html',controller:'clientesController'}).
-	when('/cliente/:id',{templateUrl:'view/clientes/update.html',controller:'clientesController'}).
-	when('/funcionarios',{templateUrl:'view/funcionarios/main.html',controller:'funcionariosController'}).
+	when('/liveclass',{templateUrl:'view/liveclass/main.html',controller:'liveclassController'}).
+	when('/liveclass/create',{templateUrl:'view/liveclass/create.html',controller:'liveclassController'}).
+	when('/liveclass/edit',{templateUrl:'view/liveclass/edit.html',controller:'liveclassController'}).
 	otherwise({redirectTo:'/'});
 
 	//configura o RESPONSE interceptor, usado para exibir o ícone de acesso ao servidor
