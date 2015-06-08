@@ -1,0 +1,89 @@
+<h2>LiveClass</h2>
+<div ng-init="loadRow()" class="row">
+    <form name="form" class="form-horizontal" ng-show="row!=null">
+        <div class="large-2 columns">
+            <label>Id
+                <input name="Id" type="text" ng-model="row.Id" required ng-disabled="row.isUpdate" />
+            </label>
+            <small class="error" ng-show="form.Id.$dirty && form.Id.$invalid">Required Field</small>
+        </div>
+        <div class="large-10 columns">
+            <label>Name
+                <input name="Name" type="text" ng-model="row.Name" required />
+            </label>
+            <small class="error" ng-show="form.Name.$dirty && form.Name.$invalid">Required Field</small>
+        </div>
+        <div class="large-6 columns">
+            <label>Url
+                <input name="Url" type="text" ng-model="row.Url" required />
+            </label>
+            <small class="error" ng-show="form.Url.$dirty && form.Url.$invalid">Required Field</small>
+        </div>
+        <div class="large-6 columns">
+            <label>Chat Url
+                <input name="ChatUrl" type="text" ng-model="row.Chat" required />
+            </label>
+            <small class="error" ng-show="form.ChatUrl.$dirty && form.ChatUrl.$invalid">Required Field</small>
+        </div>
+        <div class="large-6 columns">
+            <label>HomeworkUrl
+                <input name="HomeworkUrl" type="text" ng-model="row.HomeworkUrl" required />
+            </label>
+            <small class="error" ng-show="form.HomeworkUrl.$dirty && form.HomeworkUrl.$invalid">Required Field</small>
+        </div>
+        <div class="large-6 columns">
+            <label>ExtraContentUrl
+                <input name="ExtraContentUrl" type="text" ng-model="row.ExtraContentUrl" required />
+            </label>
+            <small class="error" ng-show="form.ExtraContentUrl.$dirty && form.ExtraContentUrl.$invalid">Required Field</small>
+        </div>
+        <div class="large-6 columns">
+            <label>Start
+                <input name="Start" type="datetime-local" ng-model="row.Start" required ng-pattern="/\d{1,2}/\d{1,2}/\d{4}/"/>
+            </label>
+            <small class="error" ng-show="form.Start.$dirty && form.Start.$invalid">Required Date Format</small>
+        </div>
+        <div class="large-3 columns">
+            <label>Duration
+                <input name="Duration" type="time" ng-model="row.Duration" required />
+            </label>
+            <small class="error" ng-show="form.Duration.$dirty && form.Duration.$invalid">Required Field</small>
+        </div>
+        <div class="control-group">
+            <label class="control-label">Email:</label>
+            <div class="controls">
+                <input name="Email" type="email" ng-model="row.Email" required/>
+                <span class="help-inline text-error" ng-show="form.Email.$dirty && form.Email.$invalid">
+                        <span ng-show="form.Email.$error.required">Campo obrigatório</span>
+                <span ng-show="form.Email.$error.email">Email inválido</span>
+                </span>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">Url:</label>
+            <div class="controls">
+                <input name="Url" type="url" ng-model="row.Url" ng-pattern="/https?://.+/" />
+                <span class="help-inline text-error" ng-show="form.Url.$dirty && form.Url.$invalid">
+                        <span>Url inválida</span>
+                </span>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">Data simples:</label>
+            <div class="controls">
+                <input name="DataSimples" ng-model="row.DataSimples" type="text" ng-pattern="/\d{1,2}/\d{1,2}/\d{4}/" />
+                <span class="help-inline text-error" ng-show="form.DataSimples.$dirty && form.DataSimples.$invalid">
+                        <span>Data inválida</span>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="form-actions">
+    <button type="submit" class="btn btn-primary" ng-click="save()" ng-Disabled="form.$invalid">Salvar</button>
+    <a href="#/clientes" class="btn">Voltar</a>
+</div>
+</form>
+<button class="btn btn-danger pull-right" ng-click="del()">Apagar</button>
+</div>
