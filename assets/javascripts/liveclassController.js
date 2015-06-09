@@ -1,13 +1,8 @@
 
-//function liveclassController($scope,$http,$routeParams,$location)
 $app.controller('liveclassController',function ($scope,$http,$routeParams,$location) {
-	//lista de clientes
 	$scope.rows = null;
-
-	//um cliente 
 	$scope.row = null;
 
-	//Pagination
 	$scope.currentPage = 0;
 	$scope.pageSize = 15;
 
@@ -24,22 +19,12 @@ $app.controller('liveclassController',function ($scope,$http,$routeParams,$locat
 	}
 
 	$scope.loadRow = function(){
-		if ($routeParams.id!=null)
-		{
-			$scope.showLoader();
-			$http.get($scope.server("/liveclass/"+$routeParams.id)).success(function(data){
-				$scope.row = data;
-				$scope.row.isUpdate = true;
-				$scope.hideLoader();
-			});
-		}
-		else
-		{
-			$scope.row = {}
-			$scope.row.CustomerID = null;
-			$scope.row.isUpdate = false;
+		$scope.showLoader();
+		$http.get($scope.server("/liveclass/"+$routeParams.id)).success(function(data){
+			$scope.row = data[0];
+			$scope.row.Start = new Date(data[0]["Start"]);
 			$scope.hideLoader();
-		}
+		});
 	}
 
 	$scope.save = function(){
@@ -51,7 +36,7 @@ $app.controller('liveclassController',function ($scope,$http,$routeParams,$locat
 		});
 	}
 
-	$scope.del = function(){
+	$scope.delete = function(){
 		if (confirm("Deseja excluir " + $scope.row.CustomerID + "?")){
 			$http.delete($scope.server("/liveclass/"+$routeParams.id)).success(function(s){
 				$scope.hideLoader();
@@ -59,7 +44,29 @@ $app.controller('liveclassController',function ($scope,$http,$routeParams,$locat
 				$location.path("/liveclass");
 			});
 		}
-
 	}
+
+	$scope.Teachers = [{}];
+	$scope.Disciplines = [{}];
+
+	$scope.addNewTeacher = function() {
+		var newItemNo = $scope.Teachers.length+1;
+		$scope.Teachers.push({});
+	};
+
+	$scope.removeTeacher = function() {
+		var lastItem = $scope.Teachers.length-1;
+		$scope.Teachers.splice(lastItem);
+	};
+
+	$scope.addNewDiscipline = function() {
+		var newItemNo = $scope.Disciplines.length+1;
+		$scope.Disciplines.push({});
+	};
+
+	$scope.removeDiscipline = function() {
+		var lastItem = $scope.Disciplines.length-1;
+		$scope.Disciplines.splice(lastItem);
+	};
 
 });

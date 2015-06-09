@@ -83,7 +83,25 @@ $app->get("/liveclass",function (){
 
 $app->get("/liveclass/:id",function ($id){
 
-	formatJson($stmt->fetchAll());
+	$arrayName = array(
+		array(
+			'Id' => 1,
+			"Url" => "www.descomplica.com.br",
+			"ChatUrl" => "chat.com/aula",
+	    	"HomeworkUrl" => "blob.descomplica/homework.pdf",
+	    	"Name" => "A ciência metafísica das coisas",
+	    	"Disciplines" => array(array( "Name" => "Fisica"),array( "Name" => "Matematica")),
+	    	"Teachers" => array(array( "Name" => "Eduardo Chaves"),array( "Name" => "Joilson Nascimento")),
+		    "ExtraContentUrl" => "blob.descomplica/extracontent.pdf",
+		    "Start" => "2015-06-15 12:00:00.000",
+		    "Duration" => "01:00:00.000",
+		    "IsFree" => 0,
+		    "IsTrial" => 1,
+		    "Tag" => "Especial Medicina",
+		    "Route" => "especial-medicina",
+		    "Status" => 0)
+    );
+	formatJson($arrayName);
 
 });
 
