@@ -60,7 +60,8 @@
                 </label>
             </div>
             <div class="large-3 columns">
-                <label>Teacher</label>
+                <span>{{Teachers}}</span>
+                <label>Teachers</label>
                 <div data-ng-repeat="Teacher in Teachers">
                     <select ng-model="Teacher.Name" placeholder="Choose a Teacher" class="large-10 columns">
                         <option value="">Choose a Teacher</option>
@@ -78,12 +79,10 @@
                 <button class="button tiny radius" ng-click="addNewTeacher()">+</button>
             </div>
             <div class="large-3 columns">
+                <span>{{Disciplines}}</span>
+                <label>Disciplines</label>
                 <div data-ng-repeat="Discipline in Disciplines">
-                    <div>
-                        
-                    </div>
-                    <label>Discipline</label>
-                    <select ng-model="form.Discipline.Name" placeholder="Choose a Discipline" class="large-10 columns">
+                    <select ng-model="Discipline.Name" placeholder="Choose a Discipline" class="large-10 columns">
                         <option value="">Choose a Discipline</option>
                         <option>Matemática</option>
                         <option>Física</option>
