@@ -26,7 +26,7 @@
             </div>
             <div class="large-6 columns">
                 <label>Chat Url
-                    <input name="ChatUrl" type="text" ng-model="row.Chat" required />
+                    <input name="ChatUrl" type="text" ng-model="row.ChatUrl" required />
                 </label>
                 <small class="error" ng-show="form.ChatUrl.$dirty && form.ChatUrl.$invalid">Required Field</small>
             </div>
@@ -56,7 +56,7 @@
             </div>
             <div class="large-3 columns">
                 <label>Duration
-                    <input name="Duration" type="time" ng-model="row.Duration " required />
+                    <input name="Duration" type="text" ng-model="row.Duration" required />
                 </label>
                 <small class="error" ng-show="form.Duration.$dirty && form.Duration.$invalid">Required Field</small>
             </div>
@@ -67,7 +67,18 @@
                 <small class="error" ng-show="form.Tag.$dirty && form.Tag.$invalid">Required Field</small>
             </div>
         </div>
-
+        <div class="row">
+            <div class="small-6 columns">
+                <label>Is Free</label>
+                <input type="checkbox" ng-model="row.IsFree" />
+                <small class="error" ng-show="form.IsFree.$dirty && form.IsFree.$invalid">Required Field</small>
+            </div>
+            <div class="small-6 columns">
+                <label>Is Trial</label>
+                <input type="checkbox" ng-model="row.IsTrial" />
+                <small class="error" ng-show="form.IsTrial.$dirty && form.IsTrial.$invalid">Required Field</small>
+            </div>
+        </div>
         <div class="row">
             <div class="large-4 columns">
                 <label>Route
@@ -75,39 +86,39 @@
                 </label>
                 <small class="error" ng-show="form.Route.$dirty && form.Route.$invalid">Required Field</small>
             </div>
-            <div class="large-3 columns">
-                <label>Teacher</label>
-                <div data-ng-repeat="Teacher in Teachers">
-                    <select ng-model="Teacher.name" placeholder="Choose a Teacher" class="large-10 columns">
-                        <option value="">Choose a Teacher</option>
-                        <option>Rafael Cunha</option>
-                        <option>Eduardo Chaves</option>
-                        <option>Joilson Nascimento</option>
+            <div class="small-10 large-3 columns">
+                <label>Teachers</label>
+                <div data-ng-repeat="Teacher in row.Teachers">
+                    <select ng-model="Teacher.Name" placeholder="Choose a Teacher" class="small-10 columns">
+                        <option>{{Teacher.Name}}</option>
+                        <option>John Dow</option>
+                        <option>Adam Smith</option>
+                        <option>Samuel Jackson</option>
                     </select>
-                    <div class="large-2 columns">
+                    <div class="small-2 columns">
                         <button class="button radius tiny alert" ng-show="$last" ng-click="removeTeacher()">-</button>
                     </div>
                </div>           
             </div>
-            <div class="large-1 columns">
+            <div class="small-2 large-1 columns">
                 <label>&nbsp;</label>
                 <button class="button tiny radius" ng-click="addNewTeacher()">+</button>
             </div>
-            <div class="large-3 columns">
-                <div data-ng-repeat="Discipline in Disciplines">
-                    <label>Discipline</label>
-                    <select ng-model="Discipline.name" placeholder="Choose a Discipline" class="large-10 columns">
-                        <option value="">Choose a Discipline</option>
-                        <option>Matemática</option>
-                        <option>Física</option>
-                        <option>Química</option>
+            <div class="small-10 large-3 columns">              
+                <label>Disciplines</label>
+                <div data-ng-repeat="Discipline in row.Disciplines">
+                    <select ng-model="Discipline.Name" placeholder="Choose a Discipline" class="small-10 columns">
+                        <option>{{Discipline.Name}}</option>
+                        <option>Math</option>
+                        <option>English</option>
+                        <option>History</option>
                     </select>
-                    <div class="large-2 columns">
+                    <div class="small-2 columns">
                         <button class="button radius tiny alert" ng-show="$last" ng-click="removeDiscipline()">-</button>
                     </div>
                 </div>
             </div>
-            <div class="large-1 columns">
+            <div class="small-2 large-1 columns">
                 <label>&nbsp;</label>
                 <button class="button tiny radius" ng-click="addNewDiscipline()">+</button>
             </div>
@@ -119,7 +130,7 @@
             </div>
             <div class="large-10 columns">
                 <button class="button radius alert left" ng-click="delete()">Apagar</button>
-                <button type="submit" class="button radius right" ng-click="save()" ng-Disabled="form.$invalid">Save</button>
+                <button type="submit" class="button radius right" ng-click="Update()" ng-Disabled="form.$invalid">Save</button>
                 
             </div>
         </div>    

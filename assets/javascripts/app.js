@@ -24,7 +24,7 @@ $app.config(['$routeProvider','$httpProvider',function($routeProvider,$httpProvi
 			      	alert("ERROR: " + $error.text);
 			    else{
 			      	if (response.status=404)
-			      		alert("Erro ao acessar servidor. Página não encontrada. Veja o log de erros para maiores detalhes");
+			      		alert("Error accessing server. Page not found. See the error log for details");
 			      	else
 			    		alert("ERROR! See log console");
 			    }
@@ -32,7 +32,7 @@ $app.config(['$routeProvider','$httpProvider',function($routeProvider,$httpProvi
 			});
 		}
 	});
-	
+
 }]);	
 
 $app.run(['$rootScope',function($rootScope){
@@ -60,13 +60,4 @@ $app.filter('startFrom', function() {
         start = +start;
         return input.slice(start);
     }
-});
-
-$app.filter('dateFormat', function($filter) {
-	return function(input)
-	{
-		if(input == null){ return ""; } 
-		var _date = $filter('date')(new Date(input), 'dd/MM/yyyy HH:mm:ss');
-		return _date.toUpperCase();
-	};
 });

@@ -3,6 +3,11 @@ $app.controller('liveclassController',function ($scope,$http,$routeParams,$locat
 	$scope.rows = null;
 	$scope.row = null;
 
+	$scope.row = {
+        "Disciplines": [{}],
+        "Teachers": [{}],
+    };
+
 	$scope.currentPage = 0;
 	$scope.pageSize = 15;
 
@@ -29,44 +34,56 @@ $app.controller('liveclassController',function ($scope,$http,$routeParams,$locat
 
 	$scope.save = function(){
 		$scope.showLoader();
-		$http.post($scope.server("/liveclass/"+$routeParams.id),$scope.row).success(function(data){
-			alert("Salvo com sucesso");
-			$scope.row.isUpdate = true;
-			$scope.hideLoader();
-		});
+		$http.post($scope.server("/liveclass/"),$scope.row)
+			.success(function(data){
+				alert("Saved with Success");
+				$scope.hideLoader();
+			})
+			.error(function(){
+				alert("An error appeared on Upload process");
+			});
+	}
+
+	$scope.update = function(){
+		$scope.showLoader();
+		$http.post($scope.server("/liveclass/"+$routeParams.id),$scope.row)
+			.success(function(data){
+				alert("Uploaded with Success");
+				$scope.hideLoader();
+			})
+			.error(function(){
+				alert("An error appeared on Upload process");
+			});
 	}
 
 	$scope.delete = function(){
 		if (confirm("Deseja excluir " + $scope.row.CustomerID + "?")){
 			$http.delete($scope.server("/liveclass/"+$routeParams.id)).success(function(s){
 				$scope.hideLoader();
-				alert("Excluído com sucesso");
+				alert("Deleted with Success");
 				$location.path("/liveclass");
 			});
 		}
 	}
 
-	$scope.Teachers = [{}];
-	$scope.Disciplines = [{}];
-
 	$scope.addNewTeacher = function() {
-		var newItemNo = $scope.Teachers.length+1;
-		$scope.Teachers.push({});
+		var newItemNo = $scope.row.Teachers.length+1;
+		$scope.row.Teachers.push({});
 	};
 
 	$scope.removeTeacher = function() {
-		var lastItem = $scope.Teachers.length-1;
-		$scope.Teachers.splice(lastItem);
+		var lastItem = $scope.row.Teachers.length-1;
+		$scope.row.Teachers.splice(lastItem);
 	};
 
 	$scope.addNewDiscipline = function() {
-		var newItemNo = $scope.Disciplines.length+1;
-		$scope.Disciplines.push({});
+		var newItemNo = $scope.row.Disciplines.length+1;
+		$scope.row.Disciplines.push({});
 	};
 
 	$scope.removeDiscipline = function() {
-		var lastItem = $scope.Disciplines.length-1;
-		$scope.Disciplines.splice(lastItem);
+		var lastItem = $scope.row.Disciplines.length-1;
+		$scope.row.Disciplines.splice(lastItem);
 	};
 
 });

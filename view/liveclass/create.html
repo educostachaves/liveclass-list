@@ -1,110 +1,126 @@
 <h2>LiveClass</h2>
 <div class="large-12">
-    <form novalidate class="form-horizontal">
+    <form name="form" novalidate class="form-horizontal">
         <div class="row">
             <div class="large-12 columns">
                 <label>Name
-                    <input name="Name" type="text" ng-model="form.Name" required />
+                    <input name="Name" type="text" ng-model="row.Name" required />
                 </label>
+                <small class="error" ng-show="form.Name.$dirty && form.Name.$invalid">Required Field</small>
             </div>
         </div>
 
         <div class="row">
             <div class="large-6 columns">
                 <label>Url
-                    <input name="Url" type="text" ng-model="form.Url" required />
+                    <input name="Url" type="text" ng-model="row.Url" required />
                 </label>
+                <small class="error" ng-show="form.Url.$dirty && form.Url.$invalid">Required Field</small>
             </div>
             <div class="large-6 columns">
                 <label>Chat Url
-                    <input name="ChatUrl" type="text" ng-model="form.Chat" required />
+                    <input name="ChatUrl" type="text" ng-model="row.ChatUrl" required />
                 </label>
+                <small class="error" ng-show="form.ChatUrl.$dirty && form.ChatUrl.$invalid">Required Field</small>
             </div>
         </div>
 
         <div class="row">
             <div class="large-6 columns">
                 <label>HomeworkUrl
-                    <input name="HomeworkUrl" type="text" ng-model="form.HomeworkUrl" required />
+                    <input name="HomeworkUrl" type="text" ng-model="row.HomeworkUrl" required />
                 </label>
+                <small class="error" ng-show="form.HomeworkUrl.$dirty && form.HomeworkUrl.$invalid">Required Field</small>
             </div>
             <div class="large-6 columns">
                 <label>ExtraContentUrl
-                    <input name="ExtraContentUrl" type="text" ng-model="form.ExtraContentUrl" required />
+                    <input name="ExtraContentUrl" type="text" ng-model="row.ExtraContentUrl" required />
                 </label>
+                <small class="error" ng-show="form.ExtraContentUrl.$dirty && form.ExtraContentUrl.$invalid">Required Field</small>
             </div>
         </div>
 
         <div class="row">
             <div class="large-6 columns">
                 <label>Start
-                    <input name="Start" type="datetime-local" ng-model="form.Start" required />
+                    <input name="Start" type="datetime-local" ng-model="row.Start" required />
                 </label>
+                <small class="error" ng-show="form.Start.$dirty && form.Start.$invalid">Required Field</small>
             </div>
             <div class="large-3 columns">
                 <label>Duration
-                    <input name="Duration" type="text" ng-model="form.Duration" required />
+                    <input name="Duration" type="text" ng-model="row.Duration" required />
                 </label>
+                <small class="error" ng-show="form.Duration.$dirty && form.Duration.$invalid">Required Field</small>
             </div>
             <div class="large-3 columns">
                 <label>Tag
-                    <input name="Tag" type="text" ng-model="form.Tag" required />
+                    <input name="Tag" type="text" ng-model="row.Tag" required />
                 </label>
+                <small class="error" ng-show="form.Tag.$dirty && form.Tag.$invalid">Required Field</small>
             </div>
         </div>
-
+        <div class="row">
+            <div class="small-6 columns">
+                <label>Is Free</label>
+                <input type="checkbox" ng-model="row.IsFree" />
+                <small class="error" ng-show="form.IsFree.$dirty && form.IsFree.$invalid">Required Field</small>
+            </div>
+            <div class="small-6 columns">
+                <label>Is Trial</label>
+                <input type="checkbox" ng-model="row.IsTrial" />
+                <small class="error" ng-show="form.IsTrial.$dirty && form.IsTrial.$invalid">Required Field</small>
+            </div>
+        </div>
         <div class="row">
             <div class="large-4 columns">
                 <label>Route
-                    <input name="Route" type="text" ng-model="form.Route" required />
+                    <input name="Route" type="text" ng-model="row.Route" required />
                 </label>
+                <small class="error" ng-show="form.Route.$dirty && form.Route.$invalid">Required Field</small>
             </div>
-            <div class="large-3 columns">
-                <span>{{Teachers}}</span>
+            <div class="small-10 large-3 columns">
                 <label>Teachers</label>
-                <div data-ng-repeat="Teacher in Teachers">
-                    <select ng-model="Teacher.Name" placeholder="Choose a Teacher" class="large-10 columns">
+                <div data-ng-repeat="Teacher in row.Teachers">
+                    <select ng-model="Teacher.Name" placeholder="Choose a Teacher" class="small-10 columns">
                         <option value="">Choose a Teacher</option>
-                        <option>Rafael Cunha</option>
-                        <option>Eduardo Chaves</option>
-                        <option>Joilson Nascimento</option>
+                        <option>John Dow</option>
+                        <option>Adam Smith</option>
+                        <option>Samuel Jackson</option>
                     </select>
-                    <div class="large-2 columns">
+                    <div class="small-2 columns">
                         <button class="button radius tiny alert" ng-show="$last" ng-click="removeTeacher()">-</button>
                     </div>
                </div>           
             </div>
-            <div class="large-1 columns">
+            <div class="small-2 large-1 columns">
                 <label>&nbsp;</label>
                 <button class="button tiny radius" ng-click="addNewTeacher()">+</button>
             </div>
-            <div class="large-3 columns">
-                <span>{{Disciplines}}</span>
+            <div class="small-10 large-3 columns">              
                 <label>Disciplines</label>
-                <div data-ng-repeat="Discipline in Disciplines">
-                    <select ng-model="Discipline.Name" placeholder="Choose a Discipline" class="large-10 columns">
+                <div data-ng-repeat="Discipline in row.Disciplines">
+                    <select ng-model="Discipline.Name" placeholder="Choose a Discipline" class="small-10 columns">
                         <option value="">Choose a Discipline</option>
-                        <option>Matemática</option>
-                        <option>Física</option>
-                        <option>Química</option>
+                        <option>Math</option>
+                        <option>English</option>
+                        <option>History</option>
                     </select>
-                    <div class="large-2 columns">
+                    <div class="small-2 columns">
                         <button class="button radius tiny alert" ng-show="$last" ng-click="removeDiscipline()">-</button>
                     </div>
                 </div>
             </div>
-            <div class="large-1 columns">
+            <div class="small-2 large-1 columns">
                 <label>&nbsp;</label>
                 <button class="button tiny radius" ng-click="addNewDiscipline()">+</button>
             </div>
         </div>
-        
         <div class="row">
             <div class="large-12 columns">
                 <a href="#/liveclass" class="button radius left">Voltar</a>
-                <button type="submit" class="button radius right" ng-click="save()">Save</button>      
+                <button type="submit" class="button radius right" ng-Disabled="form.$invalid" ng-click="save()">Save</button>      
             </div>
         </div>
-        <pre>form = {{form | json}}</pre>
     </form>
 </div>

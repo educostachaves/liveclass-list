@@ -95,8 +95,8 @@ $app->get("/liveclass/:id",function ($id){
 		    "ExtraContentUrl" => "blob.descomplica/extracontent.pdf",
 		    "Start" => "2015-06-15 12:00:00.000",
 		    "Duration" => "01:00:00.000",
-		    "IsFree" => 0,
-		    "IsTrial" => 1,
+		    "IsFree" => false,
+		    "IsTrial" => true,
 		    "Tag" => "Especial Medicina",
 		    "Route" => "especial-medicina",
 		    "Status" => 0)
