@@ -11,10 +11,9 @@
   },
   "author": "Eduardo Chaves",
   "license": "MIT",
-  "repository" :
-  { 
-    "type" : "git",
-    "url" : "https://github.com/educostachaves/liveclass-list.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/educostachaves/liveclass-list.git"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
@@ -23,6 +22,7 @@
     "grunt-contrib-concat": "^0.5.0",
     "grunt-contrib-htmlmin": "^0.3.0",
     "grunt-contrib-uglify": "^0.6.0",
-    "grunt-contrib-watch": "^0.6.1"
+    "grunt-contrib-watch": "^0.6.1",
+    "jasmine": "^2.3.1"
   }
 }
