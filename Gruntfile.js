@@ -21,8 +21,8 @@ module.exports = function (grunt) {
             libs: {
                 src: [
                     '<%= config.srcPath %>/bower_components/modernizr/modernizr.js',
-                    '<%= config.srcPath %>/bower_components/foundation/js/vendor/foundation.js',
                     '<%= config.srcPath %>/bower_components/jquery/dist/jquery.js',
+                    '<%= config.srcPath %>/bower_components/foundation/js/foundation.js',
                     '<%= config.srcPath %>/bower_components/angular/angular.js',
                     '<%= config.srcPath %>/bower_components/angular-resource/angular-resource.js',
                     '<%= config.srcPath %>/bower_components/angular-route/angular-route.js',
