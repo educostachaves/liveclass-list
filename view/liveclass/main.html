@@ -33,16 +33,28 @@
 							{{Teacher.Name}}
 						</span>
 					</td>
-					<td>{{row.Start | date:'dd/MM/yyyy @ h:mma'}}</td>
+					<td>{{row.Start | date:'dd/MM/yyyy'}}</td>
 					<td>{{row.Duration}}</td>
 					<td><a href='#/liveclass/edit/{{row.Id}}'>Editar</a></td>
 				</tr>
 			</tbody>
 		</table>
+		<div class="pagination-centered">
+			<ul class="pagination">
+				<li class="arrow">
+					<button class="button tiny radius left" ng-click="currentPage=currentPage-1" ng-disabled="currentPage == 0" >&laquo;</button>
+				</li>
+				<li ng-repeat="n in range(numberOfPages(rows.length,pageSize))"
+                    ng-class="{current: n == currentPage}"
+                    ng-click="setPage()">
+                    <a href ng-bind="n + 1">1</a>
+                </li>
+                    
+				</li>
+				<li class="arrow">
+					<button class="button tiny radius right" ng-click="currentPage=currentPage+1" ng-disabled="currentPage >= rows.length/pageSize - 1">&raquo;</button>
+				</li>
+			</ul>
+		</div>
 	</div>
-	<div class="large-12 columns">
-		<button class="button tiny radius left" ng-click="currentPage=currentPage-1" ng-disabled="currentPage == 0" >&larr; Voltar</button>
-		<button class="button tiny radius right" ng-click="currentPage=currentPage+1" ng-disabled="currentPage >= rows.length/pageSize - 1">Avançar &rarr;</button>
-	</div>
-	
 </div>

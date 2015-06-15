@@ -9,11 +9,29 @@ $app.controller('liveclassController',function ($scope,$http,$routeParams,$locat
     };
 
 	$scope.currentPage = 0;
-	$scope.pageSize = 15;
+	$scope.pageSize = 5;
 
-	$scope.numberOfPages =function(){
-		return Math.ceil($scope.rows.length/$scope.pageSize);                
+	$scope.numberPages = $scope.numberOfPages;
+
+	$scope.numberOfPages = function(numRows, pgSize){
+		return Math.ceil(numRows/pgSize);                
 	}
+
+	$scope.range = function (start, end) {
+        var ret = [];
+        if (!end) {
+            end = start;
+            start = 0;
+        }
+        for (var i = start; i < end; i++) {
+            ret.push(i);
+        }
+        return ret;
+    };
+
+    $scope.setPage = function () {
+        $scope.currentPage = this.n;
+    };
 
 	$scope.loadAll = function(){
 		$scope.showLoader();

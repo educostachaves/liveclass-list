@@ -34,7 +34,7 @@ describe('app', function () {
                 "Status": null
             };
 
-            expect(obj).toEqual('Eduardo');
+            expect(obj).string.toEqual('Eduardo');
 
         });
 
